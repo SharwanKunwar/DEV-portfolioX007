@@ -41,12 +41,27 @@ function Navbar({ scroll }) {
       }
     );
 
-    const sectionRefs = MenuList.map((item) => document.getElementById(item.toLowerCase())).filter(Boolean);
+    const sectionRefs = MenuList.map((item) =>
+      document.getElementById(item.toLowerCase())
+    ).filter(Boolean);
     sectionRefs.forEach((section) => observer.observe(section));
+
+    // ✅ Manual scroll check for bottom edge case (especially on phones)
+    const handleManualScrollToBottom = () => {
+      const scrollPos = window.scrollY + window.innerHeight;
+      const docHeight = document.documentElement.scrollHeight;
+
+      if (Math.abs(scrollPos - docHeight) < 10) {
+        setActiveSection('contact');
+      }
+    };
+
+    window.addEventListener('scroll', handleManualScrollToBottom);
 
     return () => {
       sectionRefs.forEach((section) => observer.unobserve(section));
       observer.disconnect();
+      window.removeEventListener('scroll', handleManualScrollToBottom);
     };
   }, []);
 
