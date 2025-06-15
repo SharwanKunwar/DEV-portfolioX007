@@ -44,8 +44,8 @@ function Navbar({ scroll }) {
     );
 
     // Observe each section
-    MenuList.forEach((item) => {
-      const section = document.getElementById(item.toLowerCase());
+    MenuList.forEach((items) => {
+      const section = document.getElementById(items.toLowerCase());
       if (section) observer.observe(section);
     });
 
@@ -83,21 +83,21 @@ function Navbar({ scroll }) {
         {/* Menu */}
         <div className="w-full h-full flex justify-end items-center ">
           <ul className="md:flex justify-start items-center gap-5 hidden mr-10">
-            {MenuList.map((item, index) => (
+            {MenuList.map((items, index) => (
               <motion.li 
               initial={{y:-10,opacity:0}}
               animate={{y:0,opacity:1}}
               className='py-3 px-2' key={index}>
                 <a
-                  href={`#${item.toLowerCase()}`}
-                  onClick={(e) => handleScroll(e, item.toLowerCase())}
+                  href={`#${items.toLowerCase()}`}
+                  onClick={(e) => handleScroll(e, items.toLowerCase())}
                   className={`cursor-pointer py-2 px-5 ${
-                    activeSection === item.toLowerCase()
+                    activeSection === items.toLowerCase()
                       ? 'text-white border-b-1 border-black/30 transition-all duration-300 ease-in-out '
                       : 'text-gray-500'
                   }`}
                 >
-                  {item}
+                  {items}
                 </a>
               </motion.li>
             ))}
