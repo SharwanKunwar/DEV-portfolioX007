@@ -8,6 +8,7 @@ function Navbar({ scroll }) {
     const [isOpen, setIsOpen] = useState(false);
     const MenuList = ['Home', 'About', 'Blogs', 'Projects', 'Contact'];
     const [activeSection, setActiveSection] = useState('home');
+    
 
   // Scroll to section handler
  const handleScroll = (e, targetId) => {
@@ -31,17 +32,21 @@ function Navbar({ scroll }) {
   // Intersection Observer for scroll spy
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      {
-        threshold: 0.5, // 50% of the section should be visible
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const sectionId = entry.target.id;
+        setActiveSection(sectionId);
+        
       }
-    );
+    });
+  },
+  {
+    threshold: 0.6,
+    rootMargin: '0px 0px -40% 0px', // Reduce the bottom margin so the next section isn't falsely triggered
+  }
+);
+
 
     // Observe each section
     MenuList.forEach((items) => {
