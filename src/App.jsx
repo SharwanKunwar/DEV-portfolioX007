@@ -1,33 +1,38 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import Navbar from './Components/NAVBAR/Navbar'
+import Home from './Components/Home'
+import LocomotiveScroll from 'locomotive-scroll'
+import { useEffect, useRef } from 'react'
+
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const scrollRef = useRef(null);
+
+  useEffect(()=>{
+    const scroll = new LocomotiveScroll({
+      el: scrollRef.current,
+      smooth: true,
+      smartphone:{
+        smooth: false
+      }
+    });
+    return()=>{
+      if(scroll) scroll.destroy();
+    }
+  },[]);
+
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <Navbar/>
+    <div className='bg-red-400 h-[100px] w-full'></div>
+
+    <div id='main' ref={scrollRef} data-scroll-container className='relative '>
+      <Home/>
+    <Home/>
+    </div>
+    
     </>
   )
 }
