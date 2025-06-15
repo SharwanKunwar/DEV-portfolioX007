@@ -44,8 +44,7 @@ function Navbar({ scroll }) {
     };
 
     const observer = new IntersectionObserver(observerCallback, {
-    //   threshold: 0.5,
-      threshold: isPhone? 0.5:0.6,
+      threshold: 0.5,  
       rootMargin: isPhone ? '0px 0px -40% 0px' : '0px',
     });
 
