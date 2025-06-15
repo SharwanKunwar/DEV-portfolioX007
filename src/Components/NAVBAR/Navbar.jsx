@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
-import { Menu } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { FaFacebook, FaInstagram, FaGithub } from 'react-icons/fa';
 import {motion} from 'motion/react'
+import { div } from 'motion/react-client';
 
 function Navbar({ scroll }) {
-  const MenuList = ['Home', 'About', 'Blogs', 'Projects', 'Contact'];
-  const [activeSection, setActiveSection] = useState('home');
+    const [isOpen, setIsOpen] = useState(false);
+    const MenuList = ['Home', 'About', 'Blogs', 'Projects', 'Contact'];
+    const [activeSection, setActiveSection] = useState('home');
 
   // Scroll to section handler
   const handleScroll = (e, targetId) => {
@@ -66,16 +68,19 @@ function Navbar({ scroll }) {
           </a>
           <motion.h1 
           initial={{opacity:1,x:0,rotate:0}}
-          animate={{opacity:1,x:[0,200,0],rotate:[0,60,60,0]}}
+          animate={{opacity:1,x:[0,20,0],rotate:[0,30,30,0]}}
           transition={{delay:0.1}}
-          className="text-2xl pl-1">EV</motion.h1>
+          className="text-2xl pl-1 font-bold">EV</motion.h1>
         </div>
 
         {/* Menu */}
         <div className="w-full h-full flex justify-end items-center ">
           <ul className="md:flex justify-start items-center gap-5 hidden mr-10">
             {MenuList.map((item, index) => (
-              <li className='py-3 px-2' key={index}>
+              <motion.li 
+              initial={{y:-10,opacity:0}}
+              animate={{y:0,opacity:1}}
+              className='py-3 px-2' key={index}>
                 <a
                   href={`#${item.toLowerCase()}`}
                   onClick={(e) => handleScroll(e, item.toLowerCase())}
@@ -87,7 +92,7 @@ function Navbar({ scroll }) {
                 >
                   {item}
                 </a>
-              </li>
+              </motion.li>
             ))}
           </ul>
         </div>
@@ -95,21 +100,51 @@ function Navbar({ scroll }) {
         {/* Social Icons */}
         <div className="md:w-[20%] w-[50%] h-full flex justify-center items-center gap-5">
           <section className="w-[20%] h-full md:flex md:justify-center md:items-center gap-5 hidden pr-10">
-            <a href="#facebook" aria-label="Facebook">
+            <motion.a 
+            initial={{x:300}}
+            animate={{x:0}}
+            transition={{delay:0.2}}
+            href="#facebook" aria-label="Facebook">
               <FaFacebook size={23} color="#1877F2" />
-            </a>
-            <a href="#instagram" aria-label="Instagram">
+            </motion.a>
+            <motion.a 
+            initial={{x:300}}
+            animate={{x:0}}
+            transition={{delay:0.3}}
+            href="#instagram" aria-label="Instagram">
               <FaInstagram size={23} color="#E1306C" />
-            </a>
-            <a href="#github" aria-label="GitHub">
+            </motion.a>
+            <motion.a 
+            initial={{x:300}}
+            animate={{x:0}}
+            transition={{delay:0.4}}
+            href="#github" aria-label="GitHub">
               <FaGithub size={23} color="#333" />
-            </a>
+            </motion.a>
           </section>
           <section className="md:hidden w-full h-full flex justify-center items-center">
-            <Menu size={40} />
+            <button onClick={(e)=>setIsOpen(!isOpen)}><Menu size={40} /></button>
           </section>
         </div>
       </nav>
+
+            {/* phone nav */}
+            {isOpen? (
+                <div className='bg-black/30 backdrop-blur-2xl absolute top-0 left-0 w-screen h-screen flex justify-center items-center'>
+                    <div className='bg-white w-[90%] h-[73%] rounded-lg shadow-lg flex gap-3 flex-col'>
+                        <div className=' w-full h-[15%] flex justify-between items-center px-5'>
+                            <h1 className='text-2xl'>Menu</h1>
+                            <button onClick={(e)=>setIsOpen(!isOpen)} className='text-2xl'><X size={30}/></button>
+                        </div>
+                        <div className='bg-yellow-400 w-full h-[70%] '>middle</div>
+                        <div className='bg-yellow-400 w-full h-[15%] '>bottom</div>
+                    </div>
+                </div>
+            ): ''}
+
+
+
+
     </div>
   );
 }
