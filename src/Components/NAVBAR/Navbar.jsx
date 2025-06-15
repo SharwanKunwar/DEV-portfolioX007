@@ -7,58 +7,53 @@ function Navbar({ scroll }) {
   const [isOpen, setIsOpen] = useState(false);
   const MenuList = ['Home', 'About', 'Blogs', 'Projects', 'Contact'];
   const [activeSection, setActiveSection] = useState('home');
-  const [activeSectionForPhone, setActiveSectionForPhone] = useState('home');
 
-  // Scroll to section handler
   const handleScroll = (e, targetId) => {
     e.preventDefault();
     const target = document.querySelector(`#${targetId}`);
     if (!target) return;
 
-    if (scroll && window.innerWidth > 768) {
-      scroll.scrollTo(target); // Locomotive for desktop
+    const isDesktop = window.innerWidth > 768;
+    if (scroll && isDesktop) {
+      scroll.scrollTo(target);
     } else {
-      target.scrollIntoView({ behavior: 'smooth' }); // native scroll for mobile
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
-    setTimeout(() => {
-      setIsOpen(false);
-    }, 300);
+    setIsOpen(false); // Close mobile menu
   };
 
-  // Scroll spy for both mobile and desktop
   useEffect(() => {
     const isPhone = window.innerWidth <= 768;
 
-    const observerCallback = (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const sectionId = entry.target.id;
-          if (isPhone) {
-            setActiveSectionForPhone(sectionId);
-          } else {
-            setActiveSection(sectionId);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            setActiveSection(id);
           }
-        }
-      });
+        });
+      },
+      {
+        threshold: 0.5,
+        rootMargin: isPhone ? '0px 0px -40% 0px' : '0px',
+      }
+    );
+
+    const sectionRefs = MenuList.map((item) => document.getElementById(item.toLowerCase())).filter(Boolean);
+    sectionRefs.forEach((section) => observer.observe(section));
+
+    return () => {
+      sectionRefs.forEach((section) => observer.unobserve(section));
+      observer.disconnect();
     };
-
-    const observer = new IntersectionObserver(observerCallback, {
-      threshold: 0.5,  
-      rootMargin: isPhone ? '0px 0px -40% 0px' : '0px',
-    });
-
-    MenuList.forEach((item) => {
-      const section = document.getElementById(item.toLowerCase());
-      if (section) observer.observe(section);
-    });
-
-    return () => observer.disconnect();
   }, []);
 
   return (
     <div className="absolute bg-gray-50/30 backdrop-blur-2xl w-screen md:h-[115px] h-[90px] flex justify-center items-center z-50">
       <nav className="md:bg-white/30 md:backdrop-blur-2xl md:w-[90%] w-full md:h-[60%] h-[90%] md:rounded-full flex justify-center items-center gap-5 md:border-1 md:border-white/70">
+        
         {/* Logo */}
         <div className="md:w-[15%] w-[50%] h-full flex justify-start items-center pl-4">
           <a href="/">
@@ -151,7 +146,7 @@ function Navbar({ scroll }) {
                       href={`#${item.toLowerCase()}`}
                       onClick={(e) => handleScroll(e, item.toLowerCase())}
                       className={`cursor-pointer py-2 px-5 ${
-                        activeSectionForPhone === item.toLowerCase()
+                        activeSection === item.toLowerCase()
                           ? 'text-blue-400 border-b-1 border-black/30 transition-all duration-300 ease-in-out'
                           : 'text-gray-500'
                       }`}
