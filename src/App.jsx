@@ -26,7 +26,7 @@ function App() {
   return (
     <>
     <Navbar/>
-    <div className='bg-red-400 h-[100px] w-full'></div>
+    <div className='bg-red-400/30 drop-shadow-2xl md:h-[115px] h-[100px] w-full'></div>
 
     <div id='main' ref={scrollRef} data-scroll-container className='relative '>
       <Home/>
