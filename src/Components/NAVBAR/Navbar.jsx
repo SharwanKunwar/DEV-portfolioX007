@@ -10,16 +10,23 @@ function Navbar({ scroll }) {
     const [activeSection, setActiveSection] = useState('home');
 
   // Scroll to section handler
-  const handleScroll = (e, targetId) => {
-    e.preventDefault();
-    const target = document.querySelector(`#${targetId}`);
-    if (!target) return;
-    if (scroll) {
-      scroll.scrollTo(target); // desktop
-    } else {
-      target.scrollIntoView({ behavior: 'smooth' }); // phone
-    }
-  };
+ const handleScroll = (e, targetId) => {
+  e.preventDefault();
+  const target = document.querySelector(`#${targetId}`);
+  if (!target) return;
+
+  if (scroll && window.innerWidth > 768) {
+    scroll.scrollTo(target); // Locomotive for desktop
+  } else {
+    target.scrollIntoView({ behavior: 'smooth' }); // native scroll for mobile
+  }
+
+  setTimeout(() => {
+    setIsOpen(false); // Close mobile menu after small delay
+  }, 300);
+};
+
+
 
   // Intersection Observer for scroll spy
   useEffect(() => {
@@ -130,15 +137,66 @@ function Navbar({ scroll }) {
 
             {/* phone nav */}
             {isOpen? (
-                <div className='bg-black/30 backdrop-blur-2xl absolute top-0 left-0 w-screen h-screen flex justify-center items-center'>
-                    <div className='bg-white w-[90%] h-[73%] rounded-lg shadow-lg flex gap-3 flex-col'>
+                <div className='bg-black/30 backdrop-blur-2xl fixed top-0 left-0 w-screen h-screen flex justify-center items-center z-999'>
+                    <motion.div 
+                    initial={{x:100,opacity:0}}
+                    animate={{x:0,opacity:1}}
+                    className='bg-white w-[90%] h-[73%] rounded-lg shadow-lg flex gap-3 flex-col'>
                         <div className=' w-full h-[15%] flex justify-between items-center px-5'>
-                            <h1 className='text-2xl'>Menu</h1>
-                            <button onClick={(e)=>setIsOpen(!isOpen)} className='text-2xl'><X size={30}/></button>
+                            <h1 className='text-2xl font-bold'>Menu</h1>
+                            <button onClick={()=>setIsOpen(!isOpen)}><X size={40}/></button>
                         </div>
-                        <div className='bg-yellow-400 w-full h-[70%] '>middle</div>
-                        <div className='bg-yellow-400 w-full h-[15%] '>bottom</div>
-                    </div>
+
+                        <div className=' w-full h-[70%] flex justify-center items-center text-center'>
+                             <ul>
+                          
+                                    {MenuList.map((items, index)=>{
+                                return(
+                                    <li   
+                                        className='py-3 px-2' key={index}>
+                                            <a
+                                            href={`#${items.toLowerCase()}`}
+                                            onClick={(e) => handleScroll(e, items.toLowerCase())}
+                                            className={`cursor-pointer py-2 px-5 ${
+                                                activeSection === items.toLowerCase()
+                                                ? 'text-blue-400 border-b-1 border-black/30 transition-all duration-300 ease-in-out '
+                                                : 'text-gray-500'
+                                            }`}
+                                            >
+                                            {items}
+                                            </a>
+                                        </li>
+                                )
+                             })}
+                                
+                             </ul>
+                        </div>
+
+                        <div className=' w-full h-[15%] flex justify-center items-center gap-15'>
+                            <motion.a 
+                            initial={{x:300}}
+                            animate={{x:0}}
+                            transition={{delay:0.1}}
+                            href="#facebook" aria-label="Facebook">
+                            <FaFacebook size={23} color="#1877F2" />
+                            </motion.a>
+                            <motion.a 
+                            initial={{x:300}}
+                            animate={{x:0}}
+                            transition={{delay:0.2}}
+                            href="#instagram" aria-label="Instagram">
+                            <FaInstagram size={23} color="#E1306C" />
+                            </motion.a>
+                            <motion.a 
+                            initial={{x:300}}
+                            animate={{x:0}}
+                            transition={{delay:0.3}}
+                            href="#github" aria-label="GitHub">
+                            <FaGithub size={23} color="#333" />
+                            </motion.a>
+          
+                        </div>
+                    </motion.div>
                 </div>
             ): ''}
 
