@@ -30,7 +30,7 @@ function App() {
   return (
     <>
       <Navbar scroll={scrollInstance} />
-      <div className="bg-red-400/30 backdrop-blur-3xl md:h-[115px] h-[100px] w-full"></div>
+      <div className="bg-[#111]/30 md:h-[115px] h-[90px] w-full"></div>
       <div id="main" ref={scrollRef} data-scroll-container className="relative">
         <MainPage />
       </div>
