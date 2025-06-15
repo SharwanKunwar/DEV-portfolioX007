@@ -20,7 +20,7 @@ function Navbar({ scroll }) {
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
-    setIsOpen(false); // Close mobile menu after clicking
+    setIsOpen(false); // Close mobile menu
   };
 
   useEffect(() => {
@@ -30,7 +30,8 @@ function Navbar({ scroll }) {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
+            const id = entry.target.id;
+            setActiveSection(id);
           }
         });
       },
@@ -43,10 +44,9 @@ function Navbar({ scroll }) {
     const sectionRefs = MenuList.map((item) =>
       document.getElementById(item.toLowerCase())
     ).filter(Boolean);
-
     sectionRefs.forEach((section) => observer.observe(section));
 
-    // Handle edge case when user scrolls to bottom manually
+    // ✅ Manual scroll check for bottom edge case (especially on phones)
     const handleManualScrollToBottom = () => {
       const scrollPos = window.scrollY + window.innerHeight;
       const docHeight = document.documentElement.scrollHeight;
@@ -67,11 +67,11 @@ function Navbar({ scroll }) {
 
   return (
     <div className="absolute bg-gray-50/30 backdrop-blur-2xl w-screen md:h-[115px] h-[90px] flex justify-center items-center z-50">
-      <nav className="md:bg-white/30 md:backdrop-blur-2xl md:w-[90%] w-full md:h-[60%] h-[90%] md:rounded-full flex justify-between items-center gap-5 md:border md:border-white/70 px-4 md:px-8">
+      <nav className="md:bg-white/30 md:backdrop-blur-2xl md:w-[90%] w-full md:h-[60%] h-[90%] md:rounded-full flex justify-center items-center gap-5 md:border-1 md:border-white/70">
         
         {/* Logo */}
-        <div className="md:w-[15%] w-[50%] h-full flex justify-start items-center">
-          <a href="/" aria-label="Homepage">
+        <div className="md:w-[15%] w-[50%] h-full flex justify-start items-center pl-4">
+          <a href="/">
             <motion.img
               initial={{ x: -100, opacity: 0, scale: 0.8, rotate: 50 }}
               animate={{ x: 0, scale: 1, opacity: 1, rotate: 720 }}
@@ -85,92 +85,85 @@ function Navbar({ scroll }) {
             initial={{ opacity: 1, x: 0, rotate: 0 }}
             animate={{ opacity: 1, x: [0, 20, 0], rotate: [0, 30, 30, 0] }}
             transition={{ delay: 0.1 }}
-            className="text-2xl pl-1 font-bold select-none"
+            className="text-2xl pl-1 font-bold"
           >
             EV
           </motion.h1>
         </div>
 
-        {/* Desktop Menu */}
-        <ul className="md:flex justify-start items-center gap-5 hidden">
-          {MenuList.map((item, index) => (
-            <motion.li
-              initial={{ y: -10, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              key={index}
-            >
-              <a
-                href={`#${item.toLowerCase()}`}
-                onClick={(e) => handleScroll(e, item.toLowerCase())}
-                className={`cursor-pointer py-2 px-5 rounded transition-colors duration-300 ${
-                  activeSection === item.toLowerCase()
-                    ? 'text-black border-b-2 border-black'
-                    : 'text-gray-500 hover:text-black'
-                }`}
+        {/* Menu */}
+        <div className="w-full h-full flex justify-end items-center">
+          <ul className="md:flex justify-start items-center gap-5 hidden mr-10">
+            {MenuList.map((item, index) => (
+              <motion.li
+                initial={{ y: -10, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                className="py-3 px-2"
+                key={index}
               >
-                {item}
-              </a>
-            </motion.li>
-          ))}
-        </ul>
+                <a
+                  href={`#${item.toLowerCase()}`}
+                  onClick={(e) => handleScroll(e, item.toLowerCase())}
+                  className={`cursor-pointer py-2 px-5 ${
+                    activeSection === item.toLowerCase()
+                      ? 'text-white border-b-1 border-black/30 transition-all duration-300 ease-in-out'
+                      : 'text-gray-500'
+                  }`}
+                >
+                  {item}
+                </a>
+              </motion.li>
+            ))}
+          </ul>
+        </div>
 
-        {/* Social Icons - Desktop */}
-        <section className="w-[20%] h-full md:flex justify-center items-center gap-5 hidden pr-10">
-          <motion.a initial={{ x: 300 }} animate={{ x: 0 }} transition={{ delay: 0.2 }} href="#facebook" aria-label="Facebook">
-            <FaFacebook size={23} color="#1877F2" />
-          </motion.a>
-          <motion.a initial={{ x: 300 }} animate={{ x: 0 }} transition={{ delay: 0.3 }} href="#instagram" aria-label="Instagram">
-            <FaInstagram size={23} color="#E1306C" />
-          </motion.a>
-          <motion.a initial={{ x: 300 }} animate={{ x: 0 }} transition={{ delay: 0.4 }} href="#github" aria-label="GitHub">
-            <FaGithub size={23} color="#333" />
-          </motion.a>
-        </section>
-
-        {/* Mobile Hamburger */}
-        <section className="md:hidden flex items-center">
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label={isOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={isOpen}
-            aria-controls="mobile-menu"
-          >
-            {isOpen ? <X size={40} /> : <Menu size={40} />}
-          </button>
-        </section>
+        {/* Social Icons */}
+        <div className="md:w-[20%] w-[50%] h-full flex justify-center items-center gap-5">
+          <section className="w-[20%] h-full md:flex md:justify-center md:items-center gap-5 hidden pr-10">
+            <motion.a initial={{ x: 300 }} animate={{ x: 0 }} transition={{ delay: 0.2 }} href="#facebook">
+              <FaFacebook size={23} color="#1877F2" />
+            </motion.a>
+            <motion.a initial={{ x: 300 }} animate={{ x: 0 }} transition={{ delay: 0.3 }} href="#instagram">
+              <FaInstagram size={23} color="#E1306C" />
+            </motion.a>
+            <motion.a initial={{ x: 300 }} animate={{ x: 0 }} transition={{ delay: 0.4 }} href="#github">
+              <FaGithub size={23} color="#333" />
+            </motion.a>
+          </section>
+          <section className="md:hidden w-full h-full flex justify-center items-center">
+            <button onClick={() => setIsOpen(!isOpen)}>
+              <Menu size={40} />
+            </button>
+          </section>
+        </div>
       </nav>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu */}
       {isOpen && (
-        <div
-          id="mobile-menu"
-          className="bg-black/30 backdrop-blur-2xl fixed top-0 left-0 w-screen h-screen flex justify-center items-center z-50"
-          role="dialog"
-          aria-modal="true"
-        >
+        <div className="bg-black/30 backdrop-blur-2xl fixed top-0 left-0 w-screen h-screen flex justify-center items-center z-999">
           <motion.div
             initial={{ x: 100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
-            className="bg-white w-[90%] h-[73%] rounded-lg shadow-lg flex flex-col"
+            className="bg-white w-[90%] h-[73%] rounded-lg shadow-lg flex gap-3 flex-col"
           >
             <div className="w-full h-[15%] flex justify-between items-center px-5">
               <h1 className="text-2xl font-bold">Menu</h1>
-              <button onClick={() => setIsOpen(false)} aria-label="Close menu">
+              <button onClick={() => setIsOpen(false)}>
                 <X size={40} />
               </button>
             </div>
 
             <div className="w-full h-[70%] flex justify-center items-center text-center">
-              <ul className="w-full">
+              <ul>
                 {MenuList.map((item, index) => (
                   <li className="py-3 px-2" key={index}>
                     <a
                       href={`#${item.toLowerCase()}`}
                       onClick={(e) => handleScroll(e, item.toLowerCase())}
-                      className={`cursor-pointer py-2 px-5 block rounded transition-colors duration-300 ${
+                      className={`cursor-pointer py-2 px-5 ${
                         activeSection === item.toLowerCase()
-                          ? 'text-blue-500 border-b-2 border-blue-500'
-                          : 'text-gray-500 hover:text-blue-500'
+                          ? 'text-blue-400 border-b-1 border-black/30 transition-all duration-300 ease-in-out'
+                          : 'text-gray-500'
                       }`}
                     >
                       {item}
@@ -180,14 +173,14 @@ function Navbar({ scroll }) {
               </ul>
             </div>
 
-            <div className="w-full h-[15%] flex justify-center items-center gap-8">
-              <motion.a initial={{ x: 300 }} animate={{ x: 0 }} transition={{ delay: 0.1 }} href="#facebook" aria-label="Facebook">
+            <div className="w-full h-[15%] flex justify-center items-center gap-15">
+              <motion.a initial={{ x: 300 }} animate={{ x: 0 }} transition={{ delay: 0.1 }} href="#facebook">
                 <FaFacebook size={23} color="#1877F2" />
               </motion.a>
-              <motion.a initial={{ x: 300 }} animate={{ x: 0 }} transition={{ delay: 0.2 }} href="#instagram" aria-label="Instagram">
+              <motion.a initial={{ x: 300 }} animate={{ x: 0 }} transition={{ delay: 0.2 }} href="#instagram">
                 <FaInstagram size={23} color="#E1306C" />
               </motion.a>
-              <motion.a initial={{ x: 300 }} animate={{ x: 0 }} transition={{ delay: 0.3 }} href="#github" aria-label="GitHub">
+              <motion.a initial={{ x: 300 }} animate={{ x: 0 }} transition={{ delay: 0.3 }} href="#github">
                 <FaGithub size={23} color="#333" />
               </motion.a>
             </div>
