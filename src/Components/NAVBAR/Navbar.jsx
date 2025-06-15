@@ -36,7 +36,7 @@ function Navbar({ scroll }) {
         });
       },
       {
-        threshold: 0.5,
+        threshold: 0.3,
         rootMargin: isPhone ? '0px 0px -40% 0px' : '0px',
       }
     );
@@ -51,10 +51,12 @@ function Navbar({ scroll }) {
       const scrollPos = window.scrollY + window.innerHeight;
       const docHeight = document.documentElement.scrollHeight;
 
-      if (Math.abs(scrollPos - docHeight) < 40) {
+      if (Math.abs(scrollPos - docHeight) < 100) {
         setActiveSection('contact');
       }
     };
+
+
 
     window.addEventListener('scroll', handleManualScrollToBottom);
 
@@ -64,6 +66,8 @@ function Navbar({ scroll }) {
       window.removeEventListener('scroll', handleManualScrollToBottom);
     };
   }, []);
+
+
 
   return (
     <div className="absolute bg-gray-50/30 backdrop-blur-2xl w-screen md:h-[115px] h-[90px] flex justify-center items-center z-50">
