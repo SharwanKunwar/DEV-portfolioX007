@@ -15,10 +15,10 @@ function Navbar({scroll}) {
 
   return (
 
-    <div className='absolute bg-gray-50/30 backdrop-blur-2xl w-screen md:h-[15%] h-[90px] flex justify-center items-center z-50'>
+    <div className='absolute bg-gray-50/30 backdrop-blur-2xl w-screen md:h-[115px] h-[90px] flex justify-center items-center z-50'>
 
       <nav className='md:bg-white/30 md:backdrop-blur-2xl md:w-[90%] w-full md:h-[65%] h-[90%] md:rounded-full flex justify-center items-center gap-5'>
-      
+
         <div className=' md:w-[15%] w-[50%] h-full flex justify-start items-center'>
             <img className=' pl-4 w-[70px]' src="icons/logo01.png" alt="logo" />
             <h1 className='text-2xl pl-2'>EV</h1>
@@ -45,7 +45,8 @@ function Navbar({scroll}) {
                 <a className="hover:border-b py-2 cursor-pointer" href="#github" aria-label="GitHub"><FaGithub size={23} color="#333" /></a>
             </section>
             <section className='md:hidden w-full h-full flex justify-center items-center'>
-                <Menu size={40}/>
+                <Menu size={40}/> 
+                {/* //here */}
             </section>
         </div>
     </nav>
