@@ -66,7 +66,7 @@ function Navbar({ scroll }) {
           </a>
           <motion.h1 
           initial={{opacity:1,x:0,rotate:0}}
-          animate={{opacity:1,x:[0,20,0],rotate:[0,30,30,0]}}
+          animate={{opacity:1,x:[0,200,0],rotate:[0,60,60,0]}}
           transition={{delay:0.1}}
           className="text-2xl pl-1">EV</motion.h1>
         </div>
