@@ -1,4 +1,6 @@
 import React from 'react'
+import {CoverDemo} from './ui/CoverDemo'
+
 
 function MainPage() {
 
@@ -7,7 +9,16 @@ function MainPage() {
   }
   return (
     <>
-        <section id='home' style={style01} className='w-screen h-screen flex justify-center items-center'>Home page</section>
+
+      <section id="home" className="w-screen h-screen flex justify-center items-center bg-[url('/img/backgroundGrid.png')] bg-cover bg-center">
+        <CoverDemo />
+      </section>
+
+
+
+
+
+
         <section id='about' className='bg-blue-300/30 w-screen h-screen flex justify-center items-center'>About page</section>
         <section id='blogs' className='bg-blue-200/30 w-screen h-screen flex justify-center items-center'>Blogs page</section>
         <section id='projects' className='bg-blue-400/30 w-screen h-screen flex justify-center items-center'>Projects page</section>

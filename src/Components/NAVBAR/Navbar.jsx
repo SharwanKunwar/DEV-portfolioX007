@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { LayoutDashboard, Menu, X } from 'lucide-react';
 import { FaFacebook, FaInstagram, FaGithub } from 'react-icons/fa';
-import { motion } from 'motion/react';
+import {motion} from 'motion/react'
 
 function Navbar({ scroll }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -99,9 +99,8 @@ function Navbar({ scroll }) {
         <div className="w-full h-full flex justify-end items-center">
           <ul className="md:flex justify-start items-center gap-5 hidden mr-10">
             {MenuList.map((item, index) => (
-              <motion.li
-                initial={{ y: -10, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
+              <li
+                
                 className="py-3 px-2"
                 key={index}
               >
@@ -116,7 +115,7 @@ function Navbar({ scroll }) {
                 >
                   {item}
                 </a>
-              </motion.li>
+              </li>
             ))}
           </ul>
         </div>
@@ -124,19 +123,13 @@ function Navbar({ scroll }) {
         {/* Social Icons */}
         <div className="md:w-[20%] w-[50%] h-full flex justify-center items-center gap-5">
           <section className="w-[20%] h-full md:flex md:justify-center md:items-center gap-5 hidden pr-10">
-            <motion.a initial={{ x: 300 }} animate={{ x: 0 }} transition={{ delay: 0.2 }} href="#facebook">
-              <FaFacebook size={23} color="#1877F2" />
-            </motion.a>
-            <motion.a initial={{ x: 300 }} animate={{ x: 0 }} transition={{ delay: 0.3 }} href="#instagram">
-              <FaInstagram size={23} color="#E1306C" />
-            </motion.a>
-            <motion.a initial={{ x: 300 }} animate={{ x: 0 }} transition={{ delay: 0.4 }} href="#github">
-              <FaGithub size={23} color="#333" />
-            </motion.a>
+            <a href="#facebook"><FaFacebook size={23} color="#1877F2" /></a>
+            <a href="#instagram"><FaInstagram size={23} color="#E1306C" /></a>
+            <a href="#github"><FaGithub size={23} color="#333" /></a>
           </section>
           <section className="md:hidden w-full h-full flex justify-center items-center">
             <button onClick={() => setIsOpen(!isOpen)}>
-              <Menu size={40} />
+             {isOpen?  <LayoutDashboard size={40} />:  <Menu size={40} />}
             </button>
           </section>
         </div>
@@ -150,15 +143,15 @@ function Navbar({ scroll }) {
             animate={{ x: 0, opacity: 1 }}
             className="bg-white w-[90%] h-[73%] rounded-lg shadow-lg flex gap-3 flex-col"
           >
-            <div className="w-full h-[15%] flex justify-between items-center px-5">
+            <div className="w-full h-[15%] flex justify-between items-center px-10">
               <h1 className="text-2xl font-bold">Menu</h1>
               <button onClick={() => setIsOpen(false)}>
                 <X size={40} />
               </button>
             </div>
 
-            <div className="w-full h-[70%] flex justify-center items-center text-center">
-              <ul>
+            <div className="w-full h-[70%] flex justify-center items-center text-center ">
+              <ul className=' w-full h-full flex flex-col gap-2 justify-center items-center text-lg'>
                 {MenuList.map((item, index) => (
                   <li className="py-3 px-2" key={index}>
                     <a
@@ -178,15 +171,9 @@ function Navbar({ scroll }) {
             </div>
 
             <div className="w-full h-[15%] flex justify-center items-center gap-15">
-              <motion.a initial={{ x: 300 }} animate={{ x: 0 }} transition={{ delay: 0.1 }} href="#facebook">
-                <FaFacebook size={23} color="#1877F2" />
-              </motion.a>
-              <motion.a initial={{ x: 300 }} animate={{ x: 0 }} transition={{ delay: 0.2 }} href="#instagram">
-                <FaInstagram size={23} color="#E1306C" />
-              </motion.a>
-              <motion.a initial={{ x: 300 }} animate={{ x: 0 }} transition={{ delay: 0.3 }} href="#github">
-                <FaGithub size={23} color="#333" />
-              </motion.a>
+              <a href="#facebook"><FaFacebook size={23} color="#1877F2" /></a>
+            <a href="#instagram"><FaInstagram size={23} color="#E1306C" /></a>
+            <a href="#github"><FaGithub size={23} color="#333" /></a>
             </div>
           </motion.div>
         </div>
