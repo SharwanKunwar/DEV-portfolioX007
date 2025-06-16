@@ -36,7 +36,7 @@ function Navbar({ scroll }) {
         });
       },
       {
-        threshold: 0.3,
+        threshold: 0.5,
         rootMargin: isPhone ? '0px 0px -40% 0px' : '0px',
       }
     );
