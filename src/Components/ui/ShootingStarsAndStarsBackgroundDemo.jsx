@@ -17,9 +17,9 @@ export function ShootingStarsAndStarsBackgroundDemo() {
       
     </div>
     {/*  bottom box */}
-              <div className=' w-full md:h-6/7 h-6/20 flex justify-start items-center flex-col gap-5  p-5 z-49'>
-              <button className='btn-grad md:w-[400px] w-[350px]'>Let's connect</button>
-              <button className='btn-grad w-[250px]'>View My Work</button>
+              <div className=' w-full md:h-6/7 h-6/20 flex justify-start items-center flex-col gap-5 py-3 z-49'>
+              <button className='btn-grad md:w-[400px] w-[300px]'>Let's connect</button>
+              <button className='btn-grad w-[200px]'>View My Work</button>
               <section className=' w-full mt-10 flex justify-center gap-10'>
                 <a className=' rounded-full hover:bg-white' href="#facebook"><FaFacebook size={25} color="#1877F2" /></a>
                 <a className=' rounded-lg hover:bg-white' href="#instagram"><FaInstagram size={25} color="#E1306C" /></a>

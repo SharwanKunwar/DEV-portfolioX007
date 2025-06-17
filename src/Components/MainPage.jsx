@@ -5,7 +5,7 @@ function MainPage() {
     <>
       <section 
         id="home" 
-        className="w-screen h-screen flex md:justify-center md:pt-0 pt-30 items-center flex-col relative"
+        className="w-screen h-screen flex md:justify-center p-5  md:pt-0 pt-15 items-center flex-col relative"
       >
         <ShootingStarsAndStarsBackgroundDemo/>
       </section>
