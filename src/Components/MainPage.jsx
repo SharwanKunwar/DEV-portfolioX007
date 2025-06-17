@@ -6,10 +6,10 @@ function MainPage() {
     <>
       <section 
         id="home" 
-        className="w-screen h-screen flex md:justify-center p-5 md:pt-0 pt-15 items-center flex-col relative"
+        className="w-screen  flex md:justify-center p-5 md:pt-0 pt-15 items-center flex-col relative"
       >
         <ShootingStarsAndStarsBackgroundDemo/>
-        <div className='w-full flex-1/2 flex md:items-end items-center md:pt-0 pt-15'>
+        <div className='w-full h-[13rem] flex md:items-end items-center md:pt-0 pt-15  '>
           <AnimatedTooltipPreview/>
         </div>
       </section>
