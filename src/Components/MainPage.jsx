@@ -2,6 +2,7 @@ import { AnimatedTooltipPreview } from './ui/AnimatedTooltipPreview';
 import { ShootingStarsAndStarsBackgroundDemo } from './ui/ShootingStarsAndStarsBackgroundDemo';
 import {StarsBackground} from './ui/stars-background'
 import { ShootingStars } from './ui/shooting-stars';
+import { PointerHighlightDemo } from './ui/PointerHighlightDemo';
 
 
 function MainPage() {
@@ -21,8 +22,8 @@ function MainPage() {
         
         <StarsBackground /> 
         <ShootingStars />
-       <div className='w-full h-full bg-black'>
-        
+       <div className='w-full h-full bg-black pt-15 flex justify-center'>
+        <PointerHighlightDemo/>
        </div>
       
       </section>
