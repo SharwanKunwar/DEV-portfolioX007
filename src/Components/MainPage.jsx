@@ -1,3 +1,4 @@
+import { AnimatedTooltipPreview } from './ui/AnimatedTooltipPreview';
 import { ShootingStarsAndStarsBackgroundDemo } from './ui/ShootingStarsAndStarsBackgroundDemo';
 
 function MainPage() {
@@ -5,20 +6,21 @@ function MainPage() {
     <>
       <section 
         id="home" 
-        className="w-screen h-screen flex md:justify-center p-5  md:pt-0 pt-15 items-center flex-col relative"
+        className="w-screen h-screen flex md:justify-center p-5 md:pt-0 pt-15 items-center flex-col relative"
       >
         <ShootingStarsAndStarsBackgroundDemo/>
+        <div className='w-full flex-1/2 flex md:items-end items-center md:pt-0 pt-15'>
+          <AnimatedTooltipPreview/>
+        </div>
       </section>
 
-      <section id='about' className='bg-blue-300/30 w-screen h-screen flex justify-center items-center'>
-      about
-      </section>
+      <section id='about' className='bg-blue-300/30 w-screen h-screen flex justify-center items-center'>about</section>
       <section id='blogs' className='bg-blue-200/30 w-screen h-screen flex justify-center items-center'>Blogs page</section>
       <section id='projects' className='bg-blue-400/30 w-screen h-screen flex justify-center items-center'>Projects page</section>
       <section id='contact' className='bg-blue-400/30 w-screen h-screen flex justify-center items-center'>Contact page</section>
       <section id='footer' className='bg-blue-400/30 w-screen h-screen flex justify-center items-center'>Footer page</section>
     </>
-  )
+  );
 }
 
-export default MainPage
+export default MainPage;
