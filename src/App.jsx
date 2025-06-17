@@ -30,13 +30,7 @@ function App() {
   return (
     <>
       <Navbar scroll={scrollInstance} />
-      <div 
-      style={{
-          backgroundImage: `radial-gradient(circle at center, rgba(255,255,255,0.1) 10px, transparent 1px)`,
-          backgroundSize: "9px 9px",
-          backgroundRepeat: "repeat",
-        }}
-      className="bg-[#fff]/30 md:h-[115px] h-[90px] w-full"></div>
+      <div className="bg-[#fff]/30 md:h-[100px] h-[0px] w-full"></div>
       <div id="main" ref={scrollRef} data-scroll-container className="relative">
         <MainPage />
       </div>
