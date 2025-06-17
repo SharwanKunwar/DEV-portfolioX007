@@ -125,7 +125,7 @@ function Navbar({ scroll }) {
           <section className="w-[20%] h-full md:flex md:justify-center md:items-center gap-5 hidden pr-10">
             <a href="#facebook"><FaFacebook size={23} color="#1877F2" /></a>
             <a href="#instagram"><FaInstagram size={23} color="#E1306C" /></a>
-            <a href="#github"><FaGithub size={23} color="#333" /></a>
+            <a href="https://github.com/SharwanKunwar"><FaGithub size={23} color="#333" /></a>
           </section>
           <section className="md:hidden w-full h-full flex justify-center items-center">
             <button onClick={() => setIsOpen(!isOpen)}>
@@ -173,7 +173,7 @@ function Navbar({ scroll }) {
             <div className="w-full h-[15%] flex justify-center items-center gap-15">
               <a href="#facebook"><FaFacebook size={23} color="#1877F2" /></a>
             <a href="#instagram"><FaInstagram size={23} color="#E1306C" /></a>
-            <a href="#github"><FaGithub size={23} color="#333" /></a>
+            <a href="https://github.com/SharwanKunwar"><FaGithub size={23} color="#333" /></a>
             </div>
           </motion.div>
         </div>
