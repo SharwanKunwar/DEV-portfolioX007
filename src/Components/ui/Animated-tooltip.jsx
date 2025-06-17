@@ -65,7 +65,7 @@ export const AnimatedTooltip = ({ items }) => {
           {/* Icon container */}
           <div
             onMouseMove={handleMouseMove}
-            className="h-14 w-14 flex items-center justify-center rounded-full border-2 border-white bg-white text-3xl transition-transform duration-300 group-hover:z-30 group-hover:scale-105 shadow-md"
+            className="h-14 w-14 flex items-center justify-center rounded-full border-2 border-white bg-neutral-400/30 backdrop-blur-sm text-3xl transition-transform duration-300 group-hover:z-30 group-hover:scale-105 shadow-md"
           >
             {item.icon}
           </div>

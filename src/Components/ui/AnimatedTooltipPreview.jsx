@@ -10,7 +10,7 @@ import {
   SiTailwindcss,
 } from "react-icons/si";
 
-// 👇 Updated data using icons instead of images
+
 const people = [
   {
     id: 1,
