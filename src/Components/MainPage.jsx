@@ -14,7 +14,7 @@ function MainPage() {
           backgroundSize: "9px 9px",
           backgroundRepeat: "repeat",
         }}
-        className="w-screen h-screen flex md:justify-center md:mt-10 mt-30 items-center flex-col"
+        className="w-screen h-screen flex md:justify-center md:pt-10 pt-30 items-center flex-col "
       >
         {/* top box */}
         <div className='w-full md:h-6/12 '>
