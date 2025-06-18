@@ -13,7 +13,7 @@ function MainPage() {
         className="w-screen flex md:justify-center p-5 md:pt-0 pt-15 items-center flex-col relative"
       >
         <ShootingStarsAndStarsBackgroundDemo/>
-        <div className='w-full h-[13rem] flex md:items-end items-center md:pb-10 md:pt-0 pt-15  '>
+        <div className='w-full h-[13rem] flex md:items-end items-center md:pb-10 md:pt-0 pt-7'>
           <AnimatedTooltipPreview/>
         </div>
       </section>
