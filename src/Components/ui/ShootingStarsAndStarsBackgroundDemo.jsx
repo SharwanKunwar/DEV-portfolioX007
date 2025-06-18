@@ -23,44 +23,20 @@ export function ShootingStarsAndStarsBackgroundDemo() {
     {/*  bottom box */}
               <div className=' w-full md:h-6/7 h-6/20 flex justify-start items-center flex-col gap-5 py-3 z-49'>
               <section className='flex md:gap-5 md:flex-row flex-col gap-5 md:mt-1 mt-10'>
-                <motion.button 
-                initial={{
-                  opacity:0,
-                  scale:0.98,
-                  filter:"blur(10px)",
-                  x:-500,
-                }}
-                animate={{
-                  opacity:1,
-                  scale:1,
-                  filter:"blur(0px)",
-                  x:0,
-                }}
-                transition={{
-                  
-                  delay: 0.7,
-                  type:"tween"
-                }}
+                <a href="https://www.facebook.com/sravana.kumvara">
+                  <motion.button 
+                initial={{opacity:0,scale:0.98,filter:"blur(10px)",x:-500,}}
+                animate={{opacity:1,scale:1,filter:"blur(0px)",x:0,}}
+                transition={{delay: 0.7,type:"tween"}}
                 className='btn-grad md:w-[200px] w-[300px]'>Let's connect</motion.button>
-              <motion.button 
-              initial={{
-                  opacity:0,
-                  scale:0.98,
-                  filter:"blur(10px)",
-                  x:500,
-                }}
-                animate={{
-                  opacity:1,
-                  scale:1,
-                  filter:"blur(0px)",
-                  x:0,
-                }}
-                transition={{
-                  
-                  delay: 0.7,
-                  type:"tween"
-                }}
+                </a>
+              <a href="https://github.com/SharwanKunwar">
+                <motion.button 
+              initial={{opacity:0,scale:0.98,filter:"blur(10px)",x:500,}}
+                animate={{opacity:1,scale:1,filter:"blur(0px)",x:0,}}
+                transition={{delay: 0.7,type:"tween"}}
               className='btn-grad md:w-[200px] w-[300px]'>View My Work</motion.button>
+              </a>
               </section>
               <motion.section 
               initial={{opacity:0,filter:"blur(10px)",scale:0.98}}
