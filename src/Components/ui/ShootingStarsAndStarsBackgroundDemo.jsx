@@ -27,21 +27,21 @@ export function ShootingStarsAndStarsBackgroundDemo() {
                   <motion.button 
                 initial={{opacity:0,scale:0.98,filter:"blur(10px)",x:-500,}}
                 animate={{opacity:1,scale:1,filter:"blur(0px)",x:0,}}
-                transition={{delay: 0.7,type:"tween"}}
+                transition={{delay: 0.2,type:"tween"}}
                 className='btn-grad md:w-[200px] w-[300px]'>Let's connect</motion.button>
                 </a>
               <a href="https://github.com/SharwanKunwar">
                 <motion.button 
               initial={{opacity:0,scale:0.98,filter:"blur(10px)",x:500,}}
                 animate={{opacity:1,scale:1,filter:"blur(0px)",x:0,}}
-                transition={{delay: 0.7,type:"tween"}}
+                transition={{delay: 0.2,type:"tween"}}
               className='btn-grad md:w-[200px] w-[300px]'>View My Work</motion.button>
               </a>
               </section>
               <motion.section 
               initial={{opacity:0,filter:"blur(10px)",scale:0.98}}
               animate={{opacity:1,filter:"blur(0px)",scale:1}}
-              transition={{delay:1}}
+              transition={{delay:0.5}}
               className=' w-full mt-5 flex justify-center gap-7'>
                 <a className=' rounded-full hover:bg-white' href="#facebook"><FaFacebook size={25} color="#1877F2" /></a>
                 <a className=' rounded-lg hover:bg-white' href="#instagram"><FaInstagram size={25} color="#E1306C" /></a>

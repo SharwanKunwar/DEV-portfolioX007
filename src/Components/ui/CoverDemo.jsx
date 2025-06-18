@@ -17,18 +17,18 @@ export function CoverDemo() {
         <motion.div 
         initial={{opacity: 0,scale:1,filter:"blur(10px)",y: -10,}}
         animate={{opacity: 1,scale:1,filter:"blur(0)",y: 5,}}
-        transition={{duration: 0.7,delay: 0.3,ease:"easeInOut"}}
+        transition={{duration: 0.7,delay: 0.2,ease:"easeInOut"}}
         className="pt-2"> <Cover>Sharwan jung kunwar</Cover></motion.div>
       </h1>
         <motion.h3 
         initial={{opacity: 0,scale:0.98,filter:"blur(10px)",y: -10,}}
         animate={{opacity: 1,scale:1,filter:"blur(0)",y: 0,}}
-        transition={{duration: 0.8,delay: 0.5,ease:"easeInOut"}}
+        transition={{duration: 0.8,delay: 0.2,ease:"easeInOut"}}
         className="text-[25px] text-white text-center"><span>AKA </span> Spider man</motion.h3>
         <motion.p 
-        initial={{opacity: 0,scale:0,filter:"blur(10px)",y: -9,}}
+        initial={{opacity: 0,scale:1,filter:"blur(10px)",y: -9,}}
         animate={{opacity: 1,scale:1,filter:"blur(0)",y: 0,}}
-        transition={{duration: 0.9,delay: 0.6,ease:"easeInOut"}}
+        transition={{duration: 0.9,delay: 0.2,ease:"easeInOut"}}
         className="text-[15px] mt-1 px-3 mb-5 text-neutral-400 text-center">Full-stack dev | Java & React | Passionate coder | Guitarist | Dreamer chasing growth & goals 🎯💻🎸</motion.p>
     </div>
   );
