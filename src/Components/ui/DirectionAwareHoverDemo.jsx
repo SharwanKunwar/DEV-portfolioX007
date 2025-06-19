@@ -1,4 +1,4 @@
-"use client";
+
 import { DirectionAwareHover } from "../ui/DirectionAwareHover";
 
 export function DirectionAwareHoverDemo() {

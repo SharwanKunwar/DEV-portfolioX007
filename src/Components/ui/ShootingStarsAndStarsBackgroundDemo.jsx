@@ -1,4 +1,4 @@
-"use client";
+
 import { FaFacebook, FaInstagram, FaGithub } from 'react-icons/fa';
 import './ShootingStarsAndStarsBackgroundDemo.css';
 import { ShootingStars } from "@/Components/ui/shooting-stars";

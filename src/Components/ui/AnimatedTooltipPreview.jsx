@@ -1,4 +1,4 @@
-"use client";
+
 import React from "react";
 import { AnimatedTooltip } from "../ui/Animated-tooltip";
 import {
