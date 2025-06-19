@@ -70,7 +70,7 @@ function Navbar({ scroll }) {
 
 
   return (
-    <div className="absolute bg-gray-50/30 backdrop-blur-2xl w-screen md:h-[115px] h-[90px] flex justify-center items-center z-50">
+    <div className="absolute bg-gray-50/30 backdrop-blur-2xl w-screen md:h-[115px] h-[90px] flex justify-center items-center z-49">
       <nav className="md:bg-white/30 md:backdrop-blur-2xl md:w-[90%] w-full md:h-[60%] h-[90%] md:rounded-full flex justify-center items-center gap-5 md:border-1 md:border-white/70">
         
         {/* Logo */}
@@ -137,7 +137,7 @@ function Navbar({ scroll }) {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="bg-black/30 backdrop-blur-2xl fixed top-0 left-0 w-screen h-screen flex justify-center items-center z-999">
+        <div className="bg-black/30 backdrop-blur-2xl fixed top-0 left-0 w-screen h-screen flex justify-center items-center z-50">
           <motion.div
             initial={{ x: 100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}

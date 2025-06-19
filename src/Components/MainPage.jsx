@@ -6,7 +6,7 @@ import { PointerHighlightDemo } from './ui/PointerHighlightDemo';
 import { motion } from 'motion/react';
 import { BackgroundBoxesDemo } from './ui/BackgroundBoxesDemo';
 import { DirectionAwareHoverDemo } from './ui/DirectionAwareHoverDemo';
-import { WobbleCardDemo } from './ui/WobbleCardDemo';
+
 
 
 function MainPage() {

@@ -21,16 +21,16 @@ export function ShootingStarsAndStarsBackgroundDemo() {
       
     </div>
     {/*  bottom box */}
-              <div className=' w-full md:h-6/7 h-6/20 flex justify-start items-center flex-col gap-5 py-3 z-49'>
+              <div className=' w-full md:h-6/7 h-6/20 flex justify-start items-center flex-col gap-5 py-3 z-30'>
               <section className='flex md:gap-5 md:flex-row flex-col gap-5 md:mt-1 mt-10'>
-                <a href="https://www.facebook.com/sravana.kumvara">
+                <a target='_blank' href="https://www.facebook.com/sravana.kumvara">
                   <motion.button 
                 initial={{opacity:0,scale:0.98,filter:"blur(10px)",x:-500,}}
                 animate={{opacity:1,scale:1,filter:"blur(0px)",x:0,}}
                 transition={{delay: 0.2,type:"tween"}}
                 className='btn-grad md:w-[200px] w-[300px]'>Let's connect</motion.button>
                 </a>
-              <a href="https://github.com/SharwanKunwar">
+              <a target='_blank' href="https://github.com/SharwanKunwar">
                 <motion.button 
               initial={{opacity:0,scale:0.98,filter:"blur(10px)",x:500,}}
                 animate={{opacity:1,scale:1,filter:"blur(0px)",x:0,}}
