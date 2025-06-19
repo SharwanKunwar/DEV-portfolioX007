@@ -17,7 +17,7 @@ function Navbar({ scroll }) {
     if (scroll && isDesktop) {
       scroll.scrollTo(target);
     } else {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      target.scrollIntoView({ behavior: 'auto' });
     }
 
     setIsOpen(false); // Close mobile menu
