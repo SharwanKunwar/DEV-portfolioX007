@@ -35,7 +35,7 @@ function MainPage() {
       {/* Aboutpage */}
       <section 
         id='about' 
-        className='w-screen h-screen flex flex-col justify-center items-center relative'
+        className='w-screen h-screen flex flex-col justify-center items-center relative bg-yellow-400'
       >
         <StarsBackground />
         <ShootingStars />
@@ -45,7 +45,7 @@ function MainPage() {
         </div>
 
         {/* content */}
-        <div className=' w-full h-screen flex-1 flex p-5 relative md:flex-row flex-col'>
+        <div className=' w-full h-screen flex p-5 relative md:flex-row flex-col'>
 
           <div className=' md:w-6/12 w-full md:h-full h-6/12 flex justify-center items-center'>
             {/* Scroll-animated box */}
@@ -62,21 +62,16 @@ function MainPage() {
             </motion.div>
           </div>
 
-          <div className=' md:w-6/8 w-full md:h-full h-6/12 flex justify-center items-center'>
+          <div className=' md:w-6/8 w-[90%] md:h-[90%] h-[90%] flex justify-center items-center bg-green-400'>
              <motion.div 
               initial={{x:200,opacity:0,filter:"blur(10px)"}}
               whileInView={{x:0, opacity:1,filter:"blur(0px)"}}
               transition={{duration:0.5, ease:"easeOut"}}
                 viewport={{ once: true, amount: 0.3 }}
-              className=' w-full h-full relative'
+              className=' w-[90%] h-[90%] relative bg-red-400'
             >
-              <section className='md:block hidden relative'>
-                <WobbleCardDemo/>
-              </section>
-              <section className='w-full md:hidden'>
-                <h1>asdf</h1>
-                
-              </section>
+              This is about
+              
             </motion.div>
           </div>
         </div>
