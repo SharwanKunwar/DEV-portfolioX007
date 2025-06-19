@@ -43,34 +43,7 @@ function MainPage() {
         </div>
 
         {/* content */}
-        <div className=' w-full h-screen flex p-5 relative md:flex-row flex-col'>
-
-          <div className=' md:w-6/12 w-full md:h-full h-6/15 flex justify-center items-center bg-black'>
-            {/* Scroll-animated box */}
-            <motion.div 
-              initial={{x:-200,opacity:0,filter:"blur(10px)"}}
-              whileInView={{x:0, opacity:1,filter:"blur(0px)"}}
-              transition={{duration:0.5, ease:"easeOut"}}
-                viewport={{ once: true, amount: 0.3 }}
-              className=' md:w-full w-full md:h-full h-full flex justify-center items-center bg-purple-400'
-            >
-              
-            </motion.div>
-          </div>
-
-          <div className=' md:w-6/12 w-full md:h-full flex-1 flex justify-center items-center bg-green-400'>
-             <motion.div 
-              initial={{x:200,opacity:0,filter:"blur(10px)"}}
-              whileInView={{x:0, opacity:1,filter:"blur(0px)"}}
-              transition={{duration:0.5, ease:"easeOut"}}
-                viewport={{ once: true, amount: 0.3 }}
-              className=' w-[90%] h-[90%] relative bg-red-400'
-            >
-              This is about
-              
-            </motion.div>
-          </div>
-        </div>
+       
       </section>
 
       {/* Other Sections */}
