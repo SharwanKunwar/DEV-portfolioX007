@@ -6,8 +6,6 @@ import { PointerHighlightDemo } from './ui/PointerHighlightDemo';
 import { motion } from 'motion/react';
 
 
-
-
 function MainPage() {
 
 
