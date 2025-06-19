@@ -4,7 +4,7 @@ import { StarsBackground } from './ui/stars-background';
 import { ShootingStars } from './ui/shooting-stars';
 import { PointerHighlightDemo } from './ui/PointerHighlightDemo';
 import { motion } from 'motion/react';
-import { BackgroundBoxesDemo } from './ui/BackgroundBoxesDemo';
+
 import { DirectionAwareHoverDemo } from './ui/DirectionAwareHoverDemo';
 
 
