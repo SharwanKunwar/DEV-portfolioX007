@@ -162,6 +162,17 @@ function MainPage() {
                             <p className="text-gray-500">Address</p>
                             <p className="font-semibold text-lg">Attraiya-Kailali</p>
                           </div>
+                          {/* Stack */}
+                          <div>
+                            <p className="text-gray-500">Tack stack</p>
+                            <ul>
+                              <li>React js</li>
+                              <li>Tailwindcss</li>
+                              <li>Motion</li>
+                              <li>Spring Boot</li>
+                              <li>Postgresql</li>
+                            </ul>
+                          </div>
                         </div>
                       </div>
                     </div>
